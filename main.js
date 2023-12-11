@@ -1,15 +1,17 @@
 let users = JSON.parse(localStorage.users || "{}")
 const render = new Renderer()
 const apiManager = new APIManager()
-apiManager.getData(render)
+
 
 const generate = function(){
-    apiManager.getData(render)
+    apiManager.getData().then(()=>{
+        render.renderAll(apiManager.data)
+    })
 }
 const loadUser = function(){
     const text = $("#user-select").find(":selected").text()
     let option = users[text]
-    render.renderAll(option.user, option.quote, option.pokemon,option.meat,option.friends)
+    render.renderAll(option)
 }
 
 const saveUser = function(){
@@ -20,3 +22,6 @@ const saveUser = function(){
 }
 render.renderOptions(Object.keys(users))
 
+apiManager.getData().then(()=>{
+    render.renderAll(apiManager.data)
+})

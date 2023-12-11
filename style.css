@@ -126,3 +126,61 @@ button {
     padding: 1vw;
     font-size: 1vmax;
 }
+
+.normal {
+    background-color: #A3A397;
+}
+
+.fire {
+    background-color: #FF5F42;
+}
+
+.water{
+    background-color: #51A8FF;
+}
+.electric{
+    background-color: #FAD050;
+}
+
+.grass{
+    background-color: #8BD26E;
+}
+.ice{
+    background-color: #7CD3FF;
+}
+.fighting{
+    background-color: #C06C5E;
+}
+.poison{
+    background-color: #B66EA8;
+}
+.ground{
+    background-color: #D6BA69;
+} 
+.flying{
+    background-color: #99A8FF;
+} 
+.psychic{
+    background-color: #FF6EA8;
+}
+.bug{
+    background-color: #B6C542;
+} 
+.rock{
+    background-color: #C3B47B;
+} 
+.ghost{
+    background-color: #7C7CC5;
+} 
+.dragon{
+    background-color: #7E71D6;
+} 
+.dark{
+    background-color: #8B6E5F;
+} 
+.steel{
+    background-color: #B6B6C5;
+} 
+.fairy{
+    background-color: #F0A8F0;
+}

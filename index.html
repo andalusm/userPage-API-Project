@@ -44,37 +44,37 @@
     </div>
     <script id="quote-template" type="text/x-handlebars-template">
         <p>Favourite quote</p> 
-        <div>"{{attribute}}."</div>
+        <div>"{{this}}."</div>
         <div>- Kanye West</div>
     </script>
 
     <script id="meatFiller-template" type="text/x-handlebars-template">
         <div class="meat-text">
         <div>About me:</div>
-        <div>{{attribute}}</div>
+        <div>{{this}}</div>
     </div>
     </script>
 <script id="friends-template" type="text/x-handlebars-template">
-        {{#each attribute}}
+        {{#each this}}
         <div>{{this}}</div>
         {{/each}}
     </script>
     <script id="pokemon-template" type="text/x-handlebars-template">
         
-        <img src="{{attribute.picture}}" id="pokemon-image">
-        <div id="pokemon-text">Favorite Pokemon: {{attribute.name}}</div>
+        <img src="{{picture}}" id="pokemon-image">
+        <div id="pokemon-text">Favorite Pokemon: {{name}}</div>
     </script>
 
     <script id="user-template" type="text/x-handlebars-template">
         
-        <img src="{{attribute.picture}}" id="profile-pic">
+        <img src="{{picture}}" id="profile-pic">
         <div class="user-info">
-        <div >{{attribute.name}}</div>
-        <div >{{attribute.location}}</div>
+        <div >{{name}}</div>
+        <div >{{location}}</div>
     </div>
     </script>
     <script id="user-select-template" type="text/x-handlebars-template">
-        {{#each attribute}}
+        {{#each this}}
         <option>{{this}}</option>
         {{/each}}
     </script>

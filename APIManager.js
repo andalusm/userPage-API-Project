@@ -1,32 +1,38 @@
 //This is the class that will manage all your APIs
+const USER_API = "https://randomuser.me/api/"
+const QUOTE_API = "https://api.kanye.rest/"
+const POKEMON_API = "https://pokeapi.co/api/v2/pokemon/"
+const MEAT_API = "https://baconipsum.com/api/?type=meat-and-filler"
+const FRIENDS_API = "https://randomuser.me/api/?results=7&inc=name"
+
 
 class APIManager {
     constructor() {
         this.data = {}
     }
     getUser(){
-        return $.get("https://randomuser.me/api/")
+        return $.get(USER_API)
         
     }
     getQuote(){
-        return $.get("https://api.kanye.rest/")
+        return $.get(QUOTE_API)
         
     }
     getPokemon(){
         const pokemonID = Math.floor(Math.random() * 949) + 1; 
-        return $.get("https://pokeapi.co/api/v2/pokemon/"+pokemonID);
+        return $.get(POKEMON_API+pokemonID);
     }
     getMeatFiller(){
-        return $.get("https://baconipsum.com/api/?type=meat-and-filler")
+        return $.get(MEAT_API)
         
     }
     getFriends(){
-        return $.get("https://randomuser.me/api/?results=7&inc=name")
+        return $.get(FRIENDS_API)
         
     }
-    getData(render){
+    getData(){
         
-        Promise.all([this.getUser(), this.getQuote(),this.getPokemon(), this.getMeatFiller(), this.getFriends()])
+        return Promise.all([this.getUser(), this.getQuote(),this.getPokemon(), this.getMeatFiller(), this.getFriends()])
         .then((allPromises)=>{
             let [user, quote, pokemon, meatFiller, friends] = allPromises
             const name = user.results[0].name.first+" "+ user.results[0].name.last
@@ -38,8 +44,9 @@ class APIManager {
             this.data['friends'] = names
             this.data['meat'] = meatFiller[0]
             const pokemonName = pokemon.name[0].toUpperCase() + pokemon.name.substring(1);
-            this.data['pokemon'] = {name:pokemonName, picture: pokemon.sprites["front_default"]}            
-            render.renderAll(this.data['user'], this.data['quote'], this.data['pokemon'], this.data['meat'], this.data['friends'])
+            const types = pokemon.types.map(p=>p.type.name)
+            this.data['pokemon'] = {name:pokemonName, picture: pokemon.sprites["front_default"], type: types}            
+            
         })
         .catch((error)=>{
             console.log("Some APIs failed");
@@ -49,10 +56,3 @@ class APIManager {
 
 
 }
-
-// get 7 users https://randomuser.me/api/?results=7
-
-// random quote https://api.kanye.rest/
-
-
-//meat filler   https://baconipsum.com/api/?type=meat-and-filler
